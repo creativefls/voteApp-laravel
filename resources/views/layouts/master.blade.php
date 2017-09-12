@@ -24,18 +24,10 @@
   <meta property="og:image" content="https://user-images.githubusercontent.com/10141928/27992993-bce8de68-64ca-11e7-86d8-50a489d6b744.png" />
 
 
-  <!-- Bootstrap core CSS     -->
-  <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet" />
-
   <!-- Animation library for notifications   -->
   <link href="{{ url('/css/animate.min.css') }}" rel="stylesheet" />
-
-  <!--  Paper Dashboard core CSS    -->
-  <link href="{{ url('/css/paper-dashboard.css') }}" rel="stylesheet" />
-
-
-  <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="{{ url('/css/custom.css') }}" rel="stylesheet" />
+  {{-- stylesheet --}}
+  <link href="{{ url('/css/app.css') }}" rel="stylesheet" />
 
 
   <!--  Fonts and icons     -->
@@ -82,16 +74,6 @@
 
 </body>
 <!--   Core JS Files   -->
-<script src="{{ url('/js/jquery-1.10.2.js') }}" type="text/javascript"></script>
-<script src="{{ url('/js/bootstrap.min.js') }}" type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
-<script src="{{ url('/js/bootstrap-checkbox-radio.js') }}"></script>
-
-<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-<script src="{{ url('/js/paper-dashboard.js') }}"></script>
-
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ url('/js/demo.js') }}"></script>
+<script src="{{ url('/js/app.js') }}" type="text/javascript"></script>
 
 </html>
