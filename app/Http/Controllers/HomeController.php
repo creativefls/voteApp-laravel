@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use User;
+
 class HomeController extends Controller
 {
     /**
@@ -21,8 +23,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home');
-    }
+
+     public function index(Request $request)
+     {
+       // jika rangers maka...
+       if ($request->user()->isRangers()) {
+         return redirect('rangers');
+       }
+       // jika delegates maka..
+       else if ($request->user()->isDelegates()) {
+         return redirect('delegates');
+       }
+     }
 }

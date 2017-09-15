@@ -31,7 +31,8 @@
 
 
   <!--  Fonts and icons     -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
   <link href="{{ url('/css/themify-icons.css') }}" rel="stylesheet">
 
@@ -43,13 +44,17 @@
     <div class="sidebar" data-background-color="black" data-active-color="info">
 
       <!-- jenis menunya users -->
-      @yield('navigation')
+      @if (Auth::user()->role == 'rangers')
+        @include('layouts.partials.menu_rangers')
+      @else
+        @include('layouts.partials.menu_delegates')
+      @endif
       {{-- end of menu users --}}
     </div>
 
     <div class="main-panel">
       <!-- header -->
-      @yield('header')
+      @include('layouts.partials.header')
 
       <!-- content acara -->
       <div class="content">
@@ -57,16 +62,7 @@
       </div>
 
       <!-- this is footer -->
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="copyright pull-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="fa fa-heart heart"></i> by <a href="https://indrakusuma.web.id">Creative & IT FLS</a>
-          </div>
-        </div>
-      </footer>
+      @include('layouts.partials.footer')
       <!-- end of footer -->
     </div>
   </div>

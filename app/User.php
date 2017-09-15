@@ -26,4 +26,39 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // *****************************************************
+    // ** Standard checking
+    // *****************************************************
+
+    // apakah rangers ?
+    public function isRangers()
+    {
+      $role = $this->role;
+        if ($role == 'rangers') {
+          return true;
+        }
+        return false;
+    }
+
+    // apakah delegates ?
+    public function isDelegates()
+    {
+      $role = $this->role;
+        if ($role == 'delegates') {
+          return true;
+        }
+        return false;
+    }
+
+    // dapatkah vote?
+    public function isCanVote()
+    {
+      $role = $this->role;
+        if ($role == 'delegates') {
+          return true;
+        }
+        return false;
+    }
+
 }
