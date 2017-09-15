@@ -15,10 +15,11 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-      if ($request->user()->isRangers()) {
-        # code...
-        return view('rangers.rangers_dashboard');
+      // cek dulu rolenya... admin bukan ??
+      if ($request->user()->isRangers() == false) {
+        return redirect('/');
       }
-      return redirect('/');
+      // kalau iya perbolehkan masuk...
+      return view('rangers.rangers_dashboard');
     }
 }

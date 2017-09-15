@@ -15,8 +15,13 @@ class MemberController extends Controller
 
     // return view
 
-    public function index()
+    public function index(Request $request)
     {
+      // cek dulu rolenya.. delegates bukan ?
+      if ($request->user()->isDelegates() == false) {
+        return redirect('/');
+      }
+      // kalau iya diperbolehkan akses....
       return view('delegates.delegates_dashboard');
     }
 }
