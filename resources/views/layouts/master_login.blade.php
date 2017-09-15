@@ -19,8 +19,9 @@
   <link href="{{ url('/css/app.css') }}" rel="stylesheet" />
 
   <!--  Fonts and icons     -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
 
 </head>
 

@@ -29,14 +29,14 @@
     </div>
 
     <!-- ingat saya | remember me -->
-    <div class="checkbox">
-      <label style="margin-left:-0.8em;">
-        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat Saya
-      </label>
-      <label style="pull-right">
-        <a href="{{ url('/password/reset') }}">Lupa Kata Sandi ?</a>
-      </label>
-    </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat Saya
+        </label>
+        <label style="pull-right">
+          <a href="{{ url('/password/reset') }}">Lupa Kata Sandi ?</a>
+        </label>
+      </div>
     <!-- login button -->
     <div class="text-center">
       <button type="submit" class="btn btn-info btn-fill btn-wd">Login</button>
