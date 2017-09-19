@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
               <img class="c-logo" src="{{ url('/img/logo/fls-logo-baru.png') }}" alt="FLS Logo">
             </a>
-            <a class="navbar-brand">@yield('title')</a>
+            {{-- <a class="navbar-brand">@yield('title')</a> --}}
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
