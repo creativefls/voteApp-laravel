@@ -50,7 +50,17 @@
                 <div class="row">
                   <div class="col-md-12">
                     <!-- flash data jika login gagal -->
+                    @if ($errors->has('email'))
+                      <div class="alert alert-warning">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </div>
+                    @endif
 
+                    @if ($errors->has('password'))
+                      <div class="alert alert-warning">
+                        <strong>{{ $errors->first('password') }}</strong>
+                      </div>
+                    @endif
                     @yield('content_form')
 
                   </div>

@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
           $table->enum('role',['rangers','delegates'])->default('delegates');
 
           // pilihan..
-          $table->integer('kelas_id')->unsigned();
-          $table->integer('komunitas_id')->unsigned();
-          $table->integer('makan_id')->unsigned();
+          $table->integer('kelas_id')->unsigned()->nullable();
+          $table->integer('komunitas_id')->unsigned()->nullable();
+          $table->integer('makan_id')->unsigned()->nullable();
 
           $table->foreign('kelas_id')
                 ->references('id')
