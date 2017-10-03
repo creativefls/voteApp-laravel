@@ -11,21 +11,12 @@
     <div class="form-group">
       <label>Email</label>
       <input id="email" type="email" class="form-control border-input" placeholder="emailkamu@email.com" name="email" value="{{ old('email') }}" required autofocus>
-      @if ($errors->has('email'))
-        <span class="help-block warning">
-            <strong>{{ $errors->first('email') }}</strong>
-        </span>
-      @endif
     </div>
 
     <div class="form-group">
       <label>Kata Sandi</label>
       <input id="password" type="password" class="form-control border-input" placeholder="password" name="password" required>
-      @if ($errors->has('password'))
-        <span class="help-block">
-          <strong>{{ $errors->first('password') }}</strong>
-        </span>
-      @endif
+
     </div>
 
     <!-- ingat saya | remember me -->
