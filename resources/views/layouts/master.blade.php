@@ -12,7 +12,7 @@
 
   <meta content='#cecece' name='theme-color' />
 
-  <title>@yield('title') | #DaretoCreate Future Leader Summit 2017</title>
+  <title>@yield('title') | #DaretoCreate</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
@@ -58,7 +58,14 @@
 
       <!-- content acara -->
       <div class="content">
-        @yield('content')
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              @include('flash::message')
+            </div>
+            @yield('content')
+          </div>
+        </div>
       </div>
 
       <!-- this is footer -->

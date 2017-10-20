@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
       <div class="logo">
           <a href="{{ url('/') }}" class="simple-text">
-              Rangers
+              Delegates
           </a>
       </div>
 
