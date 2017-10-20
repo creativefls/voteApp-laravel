@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 
-class RoleAdmin
+class isRangers
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,10 @@ class RoleAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 'rangers') {
-          return $next($request);
-        }
-        return redirect('/');
+      if (Auth::check() && Auth::user()->role == 'rangers') {
+        return $next($request);
+      }
+      flash('Mohon maaf.. Anda tidak diperkanankan masuk')->error();
+      return redirect()->back();
     }
 }
