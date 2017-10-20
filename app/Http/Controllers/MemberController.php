@@ -17,16 +17,13 @@ class MemberController extends Controller
 
     // return view
 
-    public function index(Request $request)
+    public function index()
     {
-      // cek dulu rolenya.. delegates bukan ?
-      if ($request->user()->isDelegates() == false) {
-        return redirect('/');
-      }
-      // kalau iya diperbolehkan akses....
       return view('delegates.delegates_dashboard');
     }
 
+      /* CONTROLLER FOR ORGANISASI / Komunitas */
+    /* ========================================================== */
     public function organisasi(Request $request)
     {
       //ambil value dari database
@@ -41,4 +38,12 @@ class MemberController extends Controller
 
       return view('delegates.detail.komunitas', ['komunitas' => $komunitas]);
     }
+
+    /* ========================================================== */
+    // controller untuk makanan
+    public function menuMakan()
+    {
+      return view('delegates.menu_makan');
+    }
+
 }
