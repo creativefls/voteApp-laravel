@@ -18,4 +18,10 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/homepage', 'HomeController@index')->name('homepage');
 Route::get('/rangers', 'AdminController@index')->name('rangers');
-Route::get('/delegates', 'MemberController@index')->name('delegates');
+//Route::get('/delegates', 'MemberController@index')->name('delegates');
+// route group for delegates
+Route::prefix('delegates')->group(function(){
+  Route::get('/', 'MemberController@index')->name('dashboard');
+  Route::get('vote-organisasi', 'MemberController@organisasi')->name('vote-organisasi');
+  Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');
+});

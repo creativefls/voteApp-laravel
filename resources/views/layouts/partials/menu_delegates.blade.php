@@ -6,7 +6,7 @@
       </div>
 
       <ul class="nav">
-          <li>
+          <li class="{{ Route::currentRouteName() == "dashboard" ? "active" : "" }}">
               <a href="{{ url('/') }}">
                   <i class="ti-panel"></i>
                   <p>Dashboard</p>
@@ -24,8 +24,8 @@
                   <p>Menu Makan</p>
               </a>
           </li>
-          <li>
-              <a href="{{ url('/') }}">
+          <li class="{{ Route::currentRouteName() == "vote-organisasi" ? "active" : "" }}">
+              <a href="{{ url('/delegates/vote-organisasi') }}">
                   <i class="ti-bar-chart"></i>
                   <p>Voting Komunitas</p>
               </a>
