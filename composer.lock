@@ -4,9 +4,92 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a820503efa20170e90434eba6953ec7f",
-    "content-hash": "67ecab389f2cf2cf3024b1a75d3f2ad8",
+    "hash": "3115bd070e9027324c94a7c0c3af2077",
+    "content-hash": "284608ab0201bbef8290f5c24c821a76",
     "packages": [
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "3.0.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "bf9ea6852183d04487bbf706df8052fc0a749f42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/bf9ea6852183d04487bbf706df8052fc0a749f42",
+                "reference": "bf9ea6852183d04487bbf706df8052fc0a749f42",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2017-10-18 15:54:55"
+        },
+        {
+            "name": "caouecs/laravel4-lang",
+            "version": "2.0.43",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "1f1a7d5d6b63636b5842cd667a162d12589604df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/1f1a7d5d6b63636b5842cd667a162d12589604df",
+                "reference": "1f1a7d5d6b63636b5842cd667a162d12589604df",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "abandoned": "caouecs/laravel-lang",
+            "time": "2016-04-20 13:26:08"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
