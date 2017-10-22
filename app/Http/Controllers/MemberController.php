@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 
-use User;
+use App\User;
 
 class MemberController extends Controller
 {
@@ -26,10 +26,13 @@ class MemberController extends Controller
     /* ========================================================== */
     public function kelasWorkshop()
     {
+      // info flash data
+      flash('Kamu hanya diberikan 1 kesempatan untuk memilih kelas workshop, jadi perhatikan pilihanmu.')->warning();
       //ambil value dari database
       $workshop = DB::table('kelas_workshop')->get();
+      $user = new User();
 
-      return view('delegates.kelas_workshop', ['workshop' => $workshop]);
+      return view('delegates.kelas_workshop', ['workshop' => $workshop, 'user' => $user]);
     }
 
       /* CONTROLLER FOR ORGANISASI / Komunitas */

@@ -61,4 +61,21 @@ class User extends Authenticatable
         return false;
     }
 
+    // menghitung jumlah pemilih makan
+    public function sumMakanan($id)
+    {
+      return $this->where('makan_id', $id)->count();
+    }
+
+    // menghitung jumlah
+    public function sumKelas($id)
+    {
+      return $this->where('kelas_id', $id)->count();
+    }
+
+    // menghitung jumlah komunitas
+    public function sumKomunitas($id)
+    {
+      return $this->where('komunitas_id', $id)->count();
+    }
 }
