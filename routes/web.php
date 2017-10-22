@@ -28,6 +28,8 @@ Route::prefix('delegates')->group(function(){
         ->middleware('isDelegates');
   Route::get('menu-makan', 'MemberController@menuMakan')->name('menu-makan')
         ->middleware('isDelegates');
+  Route::get('kelas-workshop', 'MemberController@kelasWorkshop')->name('kelas-workshop')
+        ->middleware('isDelegates');
 
   Route::get('detail/makanan/{id}', 'MemberController@detailMakanan')->where('id', '[0-9]+');
   Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');

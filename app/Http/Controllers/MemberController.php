@@ -22,9 +22,19 @@ class MemberController extends Controller
       return view('delegates.delegates_dashboard');
     }
 
+    /* CONTROLLER KELAS WORKSHOP */
+    /* ========================================================== */
+    public function kelasWorkshop()
+    {
+      //ambil value dari database
+      $workshop = DB::table('kelas_workshop')->get();
+
+      return view('delegates.kelas_workshop', ['workshop' => $workshop]);
+    }
+
       /* CONTROLLER FOR ORGANISASI / Komunitas */
     /* ========================================================== */
-    public function organisasi(Request $request)
+    public function organisasi()
     {
       //ambil value dari database
       $komunitas = DB::table('komunitas')->get();
