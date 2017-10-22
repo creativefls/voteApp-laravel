@@ -43,7 +43,15 @@ class MemberController extends Controller
     // controller untuk makanan
     public function menuMakan()
     {
-      return view('delegates.menu_makan');
+      $menu_makan = DB::table('menu_makan')->get();
+
+      return view('delegates.menu_makan', ['makanan' => $menu_makan]);
     }
 
+    public function detailMakanan($id)
+    {
+      $menu_makan = DB::table('menu_makan')->where('id', $id)->first();
+
+      return view('delegates.detail.makanan', ['makanan' => $menu_makan]);
+    }
 }

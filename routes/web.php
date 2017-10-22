@@ -22,8 +22,13 @@ Route::get('/rangers', 'AdminController@index')->name('rangers');
 // route group for delegates
 Route::prefix('delegates')->group(function(){
   Route::get('/', 'MemberController@index')->name('dashboard');
-        //->middleware('isDelegates');
+
+  //->middleware('isDelegates');
   Route::get('vote-organisasi', 'MemberController@organisasi')->name('vote-organisasi')
         ->middleware('isDelegates');
+  Route::get('menu-makan', 'MemberController@menuMakan')->name('menu-makan')
+        ->middleware('isDelegates');
+
+  Route::get('detail/makanan/{id}', 'MemberController@detailMakanan')->where('id', '[0-9]+');
   Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');
 });
