@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 
-use User;
+use App\User;
 
 class MemberController extends Controller
 {
@@ -22,9 +22,22 @@ class MemberController extends Controller
       return view('delegates.delegates_dashboard');
     }
 
+    /* CONTROLLER KELAS WORKSHOP */
+    /* ========================================================== */
+    public function kelasWorkshop()
+    {
+      // info flash data
+      flash('Kamu hanya diberikan 1 kesempatan untuk memilih kelas workshop, jadi perhatikan pilihanmu.')->warning();
+      //ambil value dari database
+      $workshop = DB::table('kelas_workshop')->get();
+      $user = new User();
+
+      return view('delegates.kelas_workshop', ['workshop' => $workshop, 'user' => $user]);
+    }
+
       /* CONTROLLER FOR ORGANISASI / Komunitas */
     /* ========================================================== */
-    public function organisasi(Request $request)
+    public function organisasi()
     {
       //ambil value dari database
       $komunitas = DB::table('komunitas')->get();
@@ -43,7 +56,15 @@ class MemberController extends Controller
     // controller untuk makanan
     public function menuMakan()
     {
-      return view('delegates.menu_makan');
+      $menu_makan = DB::table('menu_makan')->get();
+
+      return view('delegates.menu_makan', ['makanan' => $menu_makan]);
     }
 
+    public function detailMakanan($id)
+    {
+      $menu_makan = DB::table('menu_makan')->where('id', $id)->first();
+
+      return view('delegates.detail.makanan', ['makanan' => $menu_makan]);
+    }
 }

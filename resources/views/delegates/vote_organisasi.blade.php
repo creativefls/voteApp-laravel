@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Vote Organisasi')
+@section('title','Vote Organisasi/Komunitas Pilihanmu.')
 
 @section('content')
   {{-- informasi flashdata --}}

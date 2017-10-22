@@ -12,15 +12,15 @@
                   <p>Dashboard</p>
               </a>
           </li>
-          <li>
-              <a href="{{ url('/') }}">
+          <li class="{{ Route::currentRouteName() == "kelas-workshop" ? "active" : "" }}">
+              <a href="{{ url('delegates/kelas-workshop') }}">
                   <i class="ti-agenda"></i>
                   <p>Kelas Workshop</p>
               </a>
           </li>
-          <li>
-              <a href="{{ url('/') }}">
-                  <i class="ti-face-smile"></i>
+          <li class="{{ Route::currentRouteName() == "menu-makan" ? "active" : "" }}">
+              <a href="{{ url('/delegates/menu-makan') }}">
+                  <i class="ti-shopping-cart-full"></i>
                   <p>Menu Makan</p>
               </a>
           </li>
