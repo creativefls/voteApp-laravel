@@ -13,22 +13,22 @@ class UserTableSeeder extends Seeder
     {
         // insert admin
         DB::table('users')->insert([
-          'name' => 'Indra Kusuma',
-          'email' => 'rangers@fls.com',
-          'password' => bcrypt('rangers'),
-          'role' => 'rangers',
-          'created_at' => Carbon\Carbon::now(),
-          'updated_at' => Carbon\Carbon::now(),
-        ]);
-
-        // insert delegates
-        DB::table('users')->insert([
-          'name' => 'Delegates FLS',
-          'email' => 'delegates@fls.com',
-          'password' => bcrypt('delegates'),
-          'role' => 'delegates',
-          'created_at' => Carbon\Carbon::now(),
-          'updated_at' => Carbon\Carbon::now(),
+          [
+            'name' => 'Indra Kusuma',
+            'email' => 'rangers@fls.com',
+            'password' => bcrypt('rangers'),
+            'role' => 'rangers',
+            'created_at' => Carbon\Carbon::now(),
+            'updated_at' => Carbon\Carbon::now(),
+          ],
+          [
+            'name' => 'Delegates FLS',
+            'email' => 'delegates@fls.com',
+            'password' => bcrypt('delegates'),
+            'role' => 'delegates',
+            'created_at' => Carbon\Carbon::now(),
+            'updated_at' => Carbon\Carbon::now(),
+          ]
         ]);
     }
 }
