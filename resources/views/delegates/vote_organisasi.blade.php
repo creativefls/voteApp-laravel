@@ -3,13 +3,13 @@
 @section('title','Vote Organisasi/Komunitas Pilihanmu.')
 
 @section('content')
-  {{-- informasi flashdata --}}
 
-  {{-- jika kelas belum dibuka, maka arahkan ke --}}
-
-  {{-- jika kelas sudah dibuka --}}
-  {{-- check apakah user sudah memilih --}}
-  {{-- jika belum memilih -> maka tampilkan list organisasi --}}
+  @if ($isChoosen->komunitas_id == null)
+    {{-- informasi flashdata --}}
+    @php
+      flash('Kamu hanya diberikan 1 kesempatan untuk melakukan <b>Vote Komunitas Favoritmu</b>, jadi perhatikan pilihanmu.')->warning();
+    @endphp
+    {{-- show list komunitas --}}
     @foreach ($komunitas as $data)
       <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="card">
@@ -36,5 +36,8 @@
             </div>
         </div>
     @endforeach
-    {{-- jika sudah memilih -> maka tampilkan tiket Organisasi yang sudah dipilih --}}
+  @else
+    @include('delegates.tiket.komunitas');
+  @endif
+  
 @endsection

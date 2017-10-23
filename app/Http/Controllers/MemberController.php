@@ -48,11 +48,17 @@ class MemberController extends Controller
     /* ========================================================== */
     public function organisasi()
     {
-      flash('Kamu hanya diberikan 1 kesempatan untuk melakukan <b>Vote Komunitas Favoritmu</b>, jadi perhatikan pilihanmu.')->warning();
+      $fitur = WaktuBuka::all()->where('kode_fitur', 'VK')->first(); //VK is code for Vote Komunitas
+      if ($fitur->is_buka == 0) {
+        flash('Oups! Saat ini <b> Vote Komunitas</b> belum kami buka. Kami segera memberi tahu kamu jika fitur ini sudah dibuka. :)')->error()->important();
+        return redirect('/delegates');
+      }
+      else {
+        $isChoosen  = User::find(Auth::user()->id);
+        $komunitas = Komunitas::all();
 
-      $komunitas = Komunitas::all();
-
-      return view('delegates.vote_organisasi', ['komunitas' => $komunitas]);
+        return view('delegates.vote_organisasi', ['komunitas' => $komunitas,'isChoosen' => $isChoosen]);
+      }
     }
 
     public function detailOrganisasi($id)
