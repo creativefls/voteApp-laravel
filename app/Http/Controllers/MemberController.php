@@ -56,9 +56,14 @@ class MemberController extends Controller
     // controller untuk makanan
     public function menuMakan()
     {
+      // flash data
+      flash('Kamu hanya diberikan 1 kesempatan untuk memilih Menu Makan, jadi perhatikan pilihanmu.')->warning(); 
+      // get value from database
       $menu_makan = DB::table('menu_makan')->get();
+      // get value from User Model
+      $user = new User();
 
-      return view('delegates.menu_makan', ['makanan' => $menu_makan]);
+      return view('delegates.menu_makan', ['makanan' => $menu_makan, 'user' => $user]);
     }
 
     public function detailMakanan($id)
