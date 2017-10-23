@@ -34,14 +34,18 @@ class MemberController extends Controller
     /* ========================================================== */
     public function kelasWorkshop()
     {
-      // info flash data
-      flash('Kamu hanya diberikan 1 kesempatan untuk memilih <b>kelas workshop</b>, jadi perhatikan pilihanmu.')->warning();
+      $fitur = WaktuBuka::all()->where('kode_fitur', 'KW')->first(); //KW is code for Kelas Workshop
+      if ($fitur->is_buka == 0) {
+        flash('Oups! Saat ini <b> Pemilihan Kelas Workshop</b> belum kami buka. Kami segera memberi tahu kamu jika fitur ini sudah dibuka. :)')->error()->important();
+        return redirect('/delegates');
+      }
+      else {
+        $isChoosen  = User::find(Auth::user()->id);
+        $workshop   = KelasWorkshop::all();
+        $user       = new User();
 
-      //ambil value dari database
-      $workshop   = KelasWorkshop::all();
-      $user       = new User();
-
-      return view('delegates.kelas_workshop', ['workshop' => $workshop, 'user' => $user]);
+        return view('delegates.kelas_workshop', ['workshop' => $workshop, 'user' => $user, 'isChoosen' => $isChoosen]);
+      }
     }
 
       /* CONTROLLER FOR ORGANISASI / Komunitas */
