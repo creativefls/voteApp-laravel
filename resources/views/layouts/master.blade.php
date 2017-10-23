@@ -60,7 +60,7 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="col-md-12">
               @include('flash::message')
             </div>
             @yield('content')
