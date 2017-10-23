@@ -24,7 +24,9 @@ class MemberController extends Controller
 
     public function index()
     {
-      return view('delegates.delegates_dashboard');
+      $isDoing = User::find(Auth::user()->id);
+
+      return view('delegates.delegates_dashboard', ['isDoing' => $isDoing]);
     }
 
     /* CONTROLLER KELAS WORKSHOP */
