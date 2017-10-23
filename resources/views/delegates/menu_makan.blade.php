@@ -3,12 +3,13 @@
 @section('title','Pilih Makanan Favoritmu!')
 
 @section('content')
-    {{-- jika kelas belum dibuka, maka arahkan ke --}}
 
-    {{-- jika kelas sudah dibuka --}}
     {{-- check apakah user sudah memilih --}}
-
-    {{-- jika belum memilih -> maka tampilkan list makan --}}
+    @if ($isChoosen->makan_id == null)
+      @php
+        flash('Kamu hanya diberikan 1 kesempatan untuk memilih Menu Makan, jadi perhatikan pilihanmu.')->warning()
+      @endphp
+      {{-- jika belum memilih --}}
       @foreach ($makanan as $data)
         <div class="col-lg-4 col-md-4 col-sm-6">
 	        <div class="card card-user">
@@ -43,6 +44,9 @@
 	        </div>
 	      </div>
       @endforeach
-      {{-- jika sudah memilih -> maka tampilkan tiket Organisasi yang sudah dipilih --}}
+    {{-- jika sudah memilih -> maka tampilkan tiket Organisasi yang sudah dipilih --}}
+    @else
+      @include('delegates.tiket.makanan')
+    @endif
 
 @endsection

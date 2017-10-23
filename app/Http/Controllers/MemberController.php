@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
-
+use Auth;
 use App\User;
 
 class MemberController extends Controller
@@ -28,9 +28,10 @@ class MemberController extends Controller
     {
       // info flash data
       flash('Kamu hanya diberikan 1 kesempatan untuk memilih kelas workshop, jadi perhatikan pilihanmu.')->warning();
+
       //ambil value dari database
-      $workshop = DB::table('kelas_workshop')->get();
-      $user = new User();
+      $workshop   = DB::table('kelas_workshop')->get();
+      $user       = new User();
 
       return view('delegates.kelas_workshop', ['workshop' => $workshop, 'user' => $user]);
     }
@@ -56,14 +57,13 @@ class MemberController extends Controller
     // controller untuk makanan
     public function menuMakan()
     {
-      // flash data
-      flash('Kamu hanya diberikan 1 kesempatan untuk memilih Menu Makan, jadi perhatikan pilihanmu.')->warning(); 
       // get value from database
       $menu_makan = DB::table('menu_makan')->get();
+      $isChoosen  = DB::table('users')->where('id', Auth::user()->id)->first();
       // get value from User Model
       $user = new User();
 
-      return view('delegates.menu_makan', ['makanan' => $menu_makan, 'user' => $user]);
+      return view('delegates.menu_makan', ['makanan' => $menu_makan, 'user' => $user,'isChoosen' => $isChoosen]);
     }
 
     public function detailMakanan($id)
