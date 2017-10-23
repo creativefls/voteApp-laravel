@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class WaktuBuka extends Model
 {
-    protected $table = 'waktu_buka';
+    protected $table      = 'waktu_buka';
 }
