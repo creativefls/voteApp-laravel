@@ -7,7 +7,7 @@
     {{-- check apakah user sudah memilih --}}
     @if ($isChoosen->makan_id == null)
       @php
-        flash('Kamu hanya diberikan 1 kesempatan untuk memilih Menu Makan, jadi perhatikan pilihanmu.')->warning()
+        flash('Kamu hanya diberikan 1 kesempatan untuk memilih <b>menu makan</b>, jadi perhatikan pilihanmu.')->warning();
       @endphp
       {{-- jika belum memilih --}}
       @foreach ($makanan as $data)
@@ -44,8 +44,8 @@
 	        </div>
 	      </div>
       @endforeach
-    {{-- jika sudah memilih -> maka tampilkan tiket Organisasi yang sudah dipilih --}}
     @else
+      {{-- jika sudah memilih -> maka tampilkan tiket Organisasi yang sudah dipilih --}}
       @include('delegates.tiket.makanan')
     @endif
 

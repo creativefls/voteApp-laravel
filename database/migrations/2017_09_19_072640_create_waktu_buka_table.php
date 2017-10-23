@@ -15,7 +15,8 @@ class CreateWaktuBukaTable extends Migration
     {
         Schema::create('waktu_buka', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('kode_fitur');
+            $table->string('kode_fitur')
+                  ->unique();
             $table->enum('is_buka',['0','1'])
                   ->default('0');
             $table->string('deskripsi');

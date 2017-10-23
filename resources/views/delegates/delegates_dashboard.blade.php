@@ -25,11 +25,15 @@
 									Pilih Workshop
 									<br>
 									<!-- cek apakah sudah memilih kelas workshop -->
-                    <span class="text-success"><small><i class="ti-check-box"></i> Sudah Dilakukan</small></span>'
+                    @if ($isDoing->kelas_id == null)
+                      <span class="text-danger"><small><i class="ti-na"></i> Belum Dilakukan</small></span>
+                    @else
+                      <span class="text-success"><small><i class="ti-check-box"></i> Sudah Dilakukan</small></span>'
+                    @endif
 								</div>
 
 								<div class="col-xs-3 text-right">
-									<a href="{{ url('/') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
+									<a href="{{ url('delegates/kelas-workshop') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
 								</div>
 							</div>
 						</li>
@@ -43,11 +47,15 @@
 								<div class="col-xs-6">
 									Vote Komunitas
 									<br>
+                  @if ($isDoing->komunitas_id == null)
                     <span class="text-danger"><small><i class="ti-na"></i> Belum Dilakukan</small></span>
+                  @else
+                    <span class="text-success"><small><i class="ti-check-box"></i> Sudah Dilakukan</small></span>'
+                  @endif
 								</div>
 
 								<div class="col-xs-3 text-right">
-									<a href="{{ url('/') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
+									<a href="{{ url('delegates/vote-organisasi') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
 								</div>
 							</div>
 						</li>
@@ -61,12 +69,16 @@
 								<div class="col-xs-6">
 									Pilih Makanan
 									<br>
-                  <span class="text-danger"><small><i class="ti-na"></i> Belum Dilakukan</small></span>
+                  @if ($isDoing->makan_id == null)
+                    <span class="text-danger"><small><i class="ti-na"></i> Belum Dilakukan</small></span>
+                  @else
+                    <span class="text-success"><small><i class="ti-check-box"></i> Sudah Dilakukan</small></span>'
+                  @endif
 
 								</div>
 
 								<div class="col-xs-3 text-right">
-									<a href="{{ url('/') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
+									<a href="{{ url('delegates/menu-makan') }}" class="btn btn-sm btn-success btn-icon"><i class="ti-eye"></i></a>
 								</div>
 							</div>
 						</li>
