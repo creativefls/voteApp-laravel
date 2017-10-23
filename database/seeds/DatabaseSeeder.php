@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(KelasWorkshop::class);
         $this->call(MenuMakan::class);
         $this->call(Komunitas::class);
+        $this->call(KelasBuka::class);
     }
 }
