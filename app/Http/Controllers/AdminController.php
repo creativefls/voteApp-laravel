@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use User;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -15,7 +15,8 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-      // kalau iya perbolehkan masuk...
-      return view('rangers.rangers_dashboard');
+      $user = new User();
+
+      return view('rangers.rangers_dashboard', ['user' => $user]);
     }
 }
