@@ -1,10 +1,11 @@
-@php $mychoice = DB::table('users')
-                  ->join('komunitas', 'users.komunitas_id', '=', 'komunitas.id')
-                  ->select('users.*', 'komunitas.*')
+@php $mychoice = DB::table('komunitas')
+                  ->crossJoin('users')
+                  ->where('users.id', $isChoosen->id)
+                  ->where('komunitas.id', $isChoosen->komunitas_id  )
                   ->first();
      flash('Terima kasih telah berpatisipasi dalam Voting Komunitas terbaik')->success(); @endphp
 
-<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+<div class="col-md-4 col-sm-6 col-xs-12">
   <div class="card card-user">
       <div class="image">
           <img src="{{ $mychoice->gambar_logo }}" alt="{{ $mychoice->nama }}">

@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/homepage', 'HomeController@index')->name('homepage');
 Route::get('/rangers', 'AdminController@index')->name('rangers');
-//Route::get('/delegates', 'MemberController@index')->name('delegates');
+
 // route group for delegates
 Route::prefix('delegates')->group(function(){
   Route::get('/', 'MemberController@index')->name('dashboard');
@@ -33,4 +33,14 @@ Route::prefix('delegates')->group(function(){
 
   Route::get('detail/makanan/{id}', 'MemberController@detailMakanan')->where('id', '[0-9]+');
   Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');
+});
+
+// Route POST untuk memilih
+Route::prefix('pilih')->group(function(){
+  Route::post('komunitas', 'MemberController@pilihKomunitas')->name('pilih-komunitas')
+          ->middleware('isDelegates');
+  Route::post('makanan', 'MemberController@pilihMakan')->name('pilih-makanan')
+          ->middleware('isDelegates');
+  Route::post('workshop', 'MemberController@pilihWorkshop')->name('pilih-workshop')
+          ->middleware('isDelegates');
 });

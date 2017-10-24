@@ -28,16 +28,22 @@
                             <div class="col-xs-12">
                                  <a href="{{ url('/delegates/detail/komunitas/'.$data->id.'') }}" class="btn btn-info btn-sm"><i class="ti-search"></i> Selengkapnya</a>
 
-                                  <a href="{{ url('/delegates/vote-organisasi/'.$data->id.'') }}" class="btn btn-success btn-sm btn-fill"><i class="ti-heart"></i> VOTE</a>
+                                  <a href="{{ url('pilih/komunitas') }}" onclick="event.preventDefault(); document.getElementById('vote-{{ $data->id }}').submit();" class="btn btn-success btn-sm btn-fill"><i class="ti-heart"></i> VOTE</a>
                               </div>
                           </div>
                         </div>
                 </div>
             </div>
+            {{-- form post --}}
+            <form id="vote-{{ $data->id }}" action="{{ url('pilih/komunitas') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+                <input type="hidden" name="user" value="{{ $isChoosen->id }}">
+                <input type="hidden" name="komunitas_id" value="{{ $data->id }}">
+            </form>
         </div>
     @endforeach
   @else
     @include('delegates.tiket.komunitas');
   @endif
-  
+
 @endsection

@@ -28,7 +28,15 @@ class UserTableSeeder extends Seeder
             'role' => 'delegates',
             'created_at' => Carbon\Carbon::now(),
             'updated_at' => Carbon\Carbon::now(),
-          ]
+          ],
+          [
+            'name' => 'Tamu Umum',
+            'email' => 'tamu@fls.com',
+            'password' => bcrypt('tamu'),
+            'role' => 'delegates',
+            'created_at' => Carbon\Carbon::now(),
+            'updated_at' => Carbon\Carbon::now(),
+          ],
         ]);
     }
 }

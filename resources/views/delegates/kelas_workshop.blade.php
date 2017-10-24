@@ -28,7 +28,7 @@
                       @else
                         {{-- kelas tersedia --}}
                         <div class="col-xs-12">
-                          <a href="{{ url('delegates/kelas-workshop/'.$data->id.'')}}" class="btn btn-info btn-xs btn-fill btn-wd btn-block"><i class="ti-hand-stop"></i> GABUNG</a>
+                          <a href="{{ url('pilih/workshop') }}" onclick="event.preventDefault(); document.getElementById('kelas-{{ $data->id }}').submit();" class="btn btn-info btn-xs btn-fill btn-wd btn-block"><i class="ti-hand-stop"></i> GABUNG</a>
                         </div>
                       @endif
   	              </div>
@@ -36,6 +36,12 @@
   	          </div>
   	        </div>
   	      </div>
+          {{-- form post --}}
+          <form id="kelas-{{ $data->id }}" action="{{ url('pilih/workshop') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+              <input type="hidden" name="user" value="{{ $isChoosen->id }}">
+              <input type="hidden" name="kelas_id" value="{{ $data->id }}">
+          </form>
         </div>
     @endforeach
   @else

@@ -21,8 +21,9 @@ class MemberController extends Controller
         $this->middleware('auth');
     }
 
-    // return view
-
+    /* ------------------------------------------------------------------ */
+    /*                    Dashboard for Delegates                         */
+    /* ------------------------------------------------------------------ */
     public function index()
     {
       $isDoing = User::find(Auth::user()->id);
@@ -30,8 +31,9 @@ class MemberController extends Controller
       return view('delegates.delegates_dashboard', ['isDoing' => $isDoing]);
     }
 
-    /* CONTROLLER KELAS WORKSHOP */
-    /* ========================================================== */
+    /* ------------------------------------------------------------------ */
+    /*                  CONTROLLER KELAS WORKSHOP                         */
+    /* ------------------------------------------------------------------ */
     public function kelasWorkshop()
     {
       $fitur = WaktuBuka::all()->where('kode_fitur', 'KW')->first(); //KW is code for Kelas Workshop
@@ -48,8 +50,9 @@ class MemberController extends Controller
       }
     }
 
-      /* CONTROLLER FOR ORGANISASI / Komunitas */
-    /* ========================================================== */
+    /* ------------------------------------------------------------------ */
+    /*              Controller untuk komunitas / organisasi
+    /* ------------------------------------------------------------------ */
     public function organisasi()
     {
       $fitur = WaktuBuka::all()->where('kode_fitur', 'VK')->first(); //VK is code for Vote Komunitas
@@ -72,17 +75,16 @@ class MemberController extends Controller
       return view('delegates.detail.komunitas', ['komunitas' => $komunitas]);
     }
 
-    /* ========================================================== */
-    // controller untuk makanan
+    /* ------------------------------------------------------------------ */
+    //                    controller untuk makanan
+    /* ------------------------------------------------------------------ */
     public function menuMakan()
     {
       $fitur = WaktuBuka::all()->where('kode_fitur', 'MM')->first(); //MM is code for Menu Makan
-      // jika kelas belum dibuka maka..
       if ($fitur->is_buka == 0) {
         flash('Oups! Saat ini <b> pemilihan menu makan</b> belum kami buka. Kami segera memberi tahu kamu jika fitur ini sudah dibuka. :)')->error()->important();
         return redirect('/delegates');
       }
-      // jika kelas sudah dibuka..
       else {
         $menu_makan = MenuMakan::all();
         $isChoosen  = User::find(Auth::user()->id);
@@ -97,5 +99,79 @@ class MemberController extends Controller
       $menu_makan = MenuMakan::find($id);
 
       return view('delegates.detail.makanan', ['makanan' => $menu_makan]);
+    }
+
+
+    // ------------------------------------------------------------ \\
+    //    VOTE KOMUNITAS, PILIH MAKAN DAN PILIH KELAS WORKSHOP
+    // ------------------------------------------------------------ \\
+    public function pilihKomunitas(Request $request)
+    {
+      // cek dulu apakah user sudah memilih komunitas..
+      $user = User::all()->where('id', $request['user'])->first();;
+      if ($user->komunitas_id == null) {
+        // jika belum maka isi..
+        $user->update([
+          'komunitas_id' => $request['komunitas_id']
+        ]);
+      }
+      else {
+        // kirimkan flash data
+        flash('Oups! kamu sudah melakukan <b>vote komunitas</b>')->error()->important();
+      }
+
+      return redirect('delegates/vote-organisasi');
+    }
+
+    // ------------------------------------------------------------ \\
+    //                      PILIH MENU MAKAN
+    // ------------------------------------------------------------ \\
+    public function pilihMakan(Request $request)
+    {
+      $kuota = $request->user()->sumMakanan($request['makan_id']);
+      $user  = User::all()->where('id', $request['user'])->first();
+
+      // cek dulu apakah user sudah memilih..
+      if ($user->makan_id == null) {
+        // jika belum.. finalisasi untuk cek kuota makanan
+        if ($kuota >= 100) {
+          flash('Oups! kuota habis :( silahkan pilih <b>menu makan</b> yang lain ya :)')->error()->important();
+        }
+        else {
+          $user->update([
+            'makan_id' => $request['makan_id']
+          ]);
+        }
+      }
+      else {
+        flash('Oups! kamu sudah memilih <b>menu makan</b>')->error()->important();
+      }
+
+      return redirect('delegates/menu-makan');
+    }
+
+    // ------------------------------------------------------------ \\
+    //                   PILIH KELAS WORKSHOP
+    // ------------------------------------------------------------ \\
+    public function pilihWorkshop(Request $request)
+    {
+      $kuota = $request->user()->sumKelas($request['kelas_id']);
+      $user  = User::all()->where('id', $request['user'])->first();
+
+      if ($user->kelas_id == null) {
+        if ($kuota >= 49) {
+          flash('Oups! kuota habis :( silahkan pilih <b>menu makan</b> yang lain ya :)')->error()->important();
+        }
+        else {
+          $user->update([
+            'kelas_id' => $request['kelas_id']
+          ]);
+        }
+      }
+      else {
+        flash('Oups! kamu sudah memilih <b>Kelas Workshop</b>')->error()->important();
+      }
+
+      return redirect('delegates/kelas-workshop');
     }
 }
