@@ -25,6 +25,8 @@ Route::prefix('rangers')->group(function(){
   // with middleware isAdmin
   Route::get('kelas-workshop', 'AdminController@kelasWorkshop')->name('kelas-workshop')
         ->middleware('isRangers');
+  Route::get('menu-makan', 'AdminController@menuMakan')->name('menu-makan')
+        ->middleware('isRangers');
 });
 
 // route group for delegates

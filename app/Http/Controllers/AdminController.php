@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\KelasWorkshop;
+use App\MenuMakan;
 
 class AdminController extends Controller
 {
@@ -33,5 +34,16 @@ class AdminController extends Controller
       $user  = new User();
 
       return view('rangers.kelas_workshop', ['kelas' => $kelas, 'user' => $user]);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*                   Controller Menu Makan                            */
+    /* ------------------------------------------------------------------ */
+    public function menuMakan()
+    {
+      $makan = MenuMakan::all();
+      $user  = new User();
+
+      return view('rangers.menu_makan', ['makanan' => $makan, 'user' => $user]);
     }
 }

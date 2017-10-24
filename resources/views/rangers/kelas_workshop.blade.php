@@ -24,8 +24,9 @@
                   {{ $data->nama_kelas }}
 									<br>
                     <span class="text-success">
-                      <small><i class="ti-location-pin"></i>{{ $data->ruang_kelas }} </small> |
-                      <small><i class="ti-user"></i> {{ $user->sumKelas($data->id) }} peserta</small>
+                      <small><i class="ti-location-pin"></i> {{ $data->ruang_kelas }} </small> <br>
+                      <small><i class="ti-user"></i> {{ $user->sumKelas($data->id) }} delegates mimilih ini.</small><br>
+                      <small><i class="ti-receipt"></i> Masih tersedia {{ 49-$user->sumKelas($data->id) }} tiket.</small>
                     </span>
                 </div>
 							</div>
