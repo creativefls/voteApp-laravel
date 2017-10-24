@@ -17,7 +17,15 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
 Route::get('/homepage', 'HomeController@index')->name('homepage');
-Route::get('/rangers', 'AdminController@index')->name('rangers');
+
+// route group for rangers
+Route::prefix('rangers')->group(function(){
+  Route::get('/', 'AdminController@index')->name('dashboard');
+
+  // with middleware isAdmin
+  Route::get('kelas-workshop', 'AdminController@kelasWorkshop')->name('kelas-workshop')
+        ->middleware('isRangers');
+});
 
 // route group for delegates
 Route::prefix('delegates')->group(function(){

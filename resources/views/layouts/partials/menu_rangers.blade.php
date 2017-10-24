@@ -12,8 +12,8 @@
                   <p>Dashboard</p>
               </a>
           </li>
-          <li>
-              <a href="{{ url('/') }}">
+          <li class="{{ Route::currentRouteName() == "kelas-workshop" ? "active" : "" }}">
+              <a href="{{ url('rangers/kelas-workshop') }}">
                   <i class="ti-agenda"></i>
                   <p>Kelas Workshop</p>
               </a>
