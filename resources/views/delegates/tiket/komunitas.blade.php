@@ -1,6 +1,7 @@
-@php $mychoice = DB::table('users')
-                  ->join('komunitas', 'users.komunitas_id', '=', 'komunitas.id')
-                  ->select('users.*', 'komunitas.*')
+@php $mychoice = DB::table('komunitas')
+                  ->crossJoin('users')
+                  ->where('users.id', $isChoosen->id)
+                  ->where('komunitas.id', $isChoosen->komunitas_id  )
                   ->first();
      flash('Terima kasih telah berpatisipasi dalam Voting Komunitas terbaik')->success(); @endphp
 

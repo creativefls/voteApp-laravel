@@ -1,6 +1,7 @@
-@php $mychoice = DB::table('users')
-                  ->join('menu_makan', 'users.makan_id', '=', 'menu_makan.id')
-                  ->select('users.*', 'menu_makan.*')
+@php $mychoice = DB::table('menu_makan')
+                  ->crossJoin('users')
+                  ->where('users.id', $isChoosen->id)
+                  ->where('menu_makan.id', $isChoosen->makan_id)
                   ->first();
                 flash('Kamu telah memilih menu '.$mychoice->nama.'')->success(); @endphp
 

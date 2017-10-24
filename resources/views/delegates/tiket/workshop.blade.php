@@ -1,11 +1,12 @@
-@php $mychoice = DB::table('users')
-                  ->join('kelas_workshop', 'users.kelas_id', '=', 'kelas_workshop.id')
-                  ->select('users.*', 'kelas_workshop.*')
+@php $mychoice = DB::table('kelas_workshop')
+                  ->crossJoin('users')
+                  ->where('users.id', $isChoosen->id)
+                  ->where('kelas_workshop.id', $isChoosen->kelas_id)
                   ->first();
       flash('Kamu telah memilih kelas '.$mychoice->nama_kelas.'')->success();
     @endphp
 
-<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+<div class="col-md-4 col-sm-6 col-xs-12">
   <div class="card card-user">
       <div class="image">
           <img src="https://user-images.githubusercontent.com/10141928/29747006-4ddf9562-8b16-11e7-8c67-6046135e827d.png" alt="{{ $mychoice->nama_kelas }}">

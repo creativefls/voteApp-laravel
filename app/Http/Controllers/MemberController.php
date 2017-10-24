@@ -119,6 +119,7 @@ class MemberController extends Controller
         // kirimkan flash data
         flash('Oups! kamu sudah melakukan <b>vote komunitas</b>')->error()->important();
       }
+
       return redirect('delegates/vote-organisasi');
     }
 
@@ -127,10 +128,10 @@ class MemberController extends Controller
     // ------------------------------------------------------------ \\
     public function pilihMakan(Request $request)
     {
-      // cek dulu apakah user sudah memilih..
       $kuota = $request->user()->sumMakanan($request['makan_id']);
       $user  = User::all()->where('id', $request['user'])->first();
 
+      // cek dulu apakah user sudah memilih..
       if ($user->makan_id == null) {
         // jika belum.. finalisasi untuk cek kuota makanan
         if ($kuota >= 100) {
@@ -145,6 +146,32 @@ class MemberController extends Controller
       else {
         flash('Oups! kamu sudah memilih <b>menu makan</b>')->error()->important();
       }
-      return redirect('delegates/pilih-makanan');
+
+      return redirect('delegates/menu-makan');
+    }
+
+    // ------------------------------------------------------------ \\
+    //                   PILIH KELAS WORKSHOP
+    // ------------------------------------------------------------ \\
+    public function pilihWorkshop(Request $request)
+    {
+      $kuota = $request->user()->sumKelas($request['kelas_id']);
+      $user  = User::all()->where('id', $request['user'])->first();
+
+      if ($user->kelas_id == null) {
+        if ($kuota >= 49) {
+          flash('Oups! kuota habis :( silahkan pilih <b>menu makan</b> yang lain ya :)')->error()->important();
+        }
+        else {
+          $user->update([
+            'kelas_id' => $request['kelas_id']
+          ]);
+        }
+      }
+      else {
+        flash('Oups! kamu sudah memilih <b>Kelas Workshop</b>')->error()->important();
+      }
+
+      return redirect('delegates/kelas-workshop');
     }
 }
