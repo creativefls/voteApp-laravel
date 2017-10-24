@@ -1,9 +1,10 @@
 @php $mychoice = DB::table('users')
                   ->join('menu_makan', 'users.makan_id', '=', 'menu_makan.id')
                   ->select('users.*', 'menu_makan.*')
-                  ->first() @endphp
+                  ->first();
+                flash('Kamu telah memilih menu '.$mychoice->nama.'')->success(); @endphp
 
-<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+<div class="col-md-4 col-xs-12">
   <div class="card card-user">
       <div class="image">
           <img src="{{ $mychoice->foto }}" alt="{{ $mychoice->nama }}">

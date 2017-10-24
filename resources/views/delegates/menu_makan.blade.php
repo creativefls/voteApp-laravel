@@ -36,12 +36,18 @@
                         @else
                           {{-- stock makanan masih tersedia --}}
                           <div class="col-xs-6">
-                            <a href="{{ url('delegates/menu-makan/'.$data->id.'')}}" class="btn btn-success btn-sm btn-fill"><i class="ti-shopping-cart-full"></i> ORDER</a>
+                            <a href="{{ url('pilih/makanan') }}" onclick="event.preventDefault(); document.getElementById('makan-{{ $data->id }}').submit();" class="btn btn-success btn-sm btn-fill"><i class="ti-shopping-cart-full"></i> ORDER</a>
                           </div>
                         @endif
 			              </div>
 			            </div>
 	        </div>
+          {{-- form menu makan --}}
+          <form id="makan-{{ $data->id }}" action="{{ url('pilih/makanan') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+              <input type="hidden" name="user" value="{{ $isChoosen->id }}">
+              <input type="hidden" name="makan_id" value="{{ $data->id }}">
+          </form>
 	      </div>
       @endforeach
     @else

@@ -120,6 +120,31 @@ class MemberController extends Controller
         flash('Oups! kamu sudah melakukan <b>vote komunitas</b>')->error()->important();
       }
       return redirect('delegates/vote-organisasi');
+    }
 
+    // ------------------------------------------------------------ \\
+    //                      PILIH MENU MAKAN
+    // ------------------------------------------------------------ \\
+    public function pilihMakan(Request $request)
+    {
+      // cek dulu apakah user sudah memilih..
+      $kuota = $request->user()->sumMakanan($request['makan_id']);
+      $user  = User::all()->where('id', $request['user'])->first();
+
+      if ($user->makan_id == null) {
+        // jika belum.. finalisasi untuk cek kuota makanan
+        if ($kuota >= 100) {
+          flash('Oups! kuota habis :( silahkan pilih <b>menu makan</b> yang lain ya :)')->error()->important();
+        }
+        else {
+          $user->update([
+            'makan_id' => $request['makan_id']
+          ]);
+        }
+      }
+      else {
+        flash('Oups! kamu sudah memilih <b>menu makan</b>')->error()->important();
+      }
+      return redirect('delegates/pilih-makanan');
     }
 }

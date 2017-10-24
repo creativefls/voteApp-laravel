@@ -38,3 +38,5 @@ Route::prefix('delegates')->group(function(){
 // Route POST
 Route::post('/pilih/komunitas', 'MemberController@pilihKomunitas')->name('pilih-komunitas')
         ->middleware('isDelegates');
+Route::post('/pilih/makanan', 'MemberController@pilihMakan')->name('pilih-makanan')
+        ->middleware('isDelegates');
