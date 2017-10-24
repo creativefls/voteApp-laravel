@@ -34,3 +34,7 @@ Route::prefix('delegates')->group(function(){
   Route::get('detail/makanan/{id}', 'MemberController@detailMakanan')->where('id', '[0-9]+');
   Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');
 });
+
+// Route POST
+Route::post('/pilih/komunitas', 'MemberController@pilihKomunitas')->name('pilih-komunitas')
+        ->middleware('isDelegates');
