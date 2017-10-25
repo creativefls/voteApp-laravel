@@ -8,6 +8,7 @@ use App\User;
 use App\KelasWorkshop;
 use App\MenuMakan;
 use App\WaktuBuka;
+use App\Komunitas;
 
 class AdminController extends Controller
 {
@@ -47,9 +48,19 @@ class AdminController extends Controller
 
       return view('rangers.menu_makan', ['makanan' => $makan, 'user' => $user]);
     }
+    /* ------------------------------------------------------------------ */
+    /*               Controller Hasil Voting                              */
+    /* ------------------------------------------------------------------ */
+    public function hasilVoting()
+    {
+      $komunitas = Komunitas::all();
+      $user      = new User();
+
+      return view('rangers.hasil_voting', ['komunitas' => $komunitas, 'user' => $user]);
+    }
 
     /* ------------------------------------------------------------------ */
-    /*               Controller Buka Tutup Fitur                         */
+    /*                Controller Buka Tutup Fitur                         */
     /* ------------------------------------------------------------------ */
     public function bukaTutup()
     {
@@ -60,12 +71,12 @@ class AdminController extends Controller
 
     public function updateFitur(Request $request)
     {
-      $fitur = WaktuBuka::all()->where('id', $request['fitur_id'])->first();
+      $fitur = WaktuBuka::where('id', $request['fitur_id'])->first();
       $fitur->update([
         'is_buka' => $request['is_buka']
       ]);
 
-      flash('Kelas berhasil diperbaharui')->success();
+      flash('Fitur berhasil diperbaharui')->success();
       return redirect('rangers/buka-tutup');
     }
 

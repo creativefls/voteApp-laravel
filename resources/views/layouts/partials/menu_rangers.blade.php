@@ -24,8 +24,8 @@
                   <p>Daftar Makanan</p>
               </a>
           </li>
-          <li>
-              <a href="{{ url('/') }}">
+          <li class="{{ Route::currentRouteName() == "hasil-voting" ? "active" : "" }}">
+              <a href="{{ url('rangers/hasil-voting') }}">
                   <i class="ti-bar-chart"></i>
                   <p>Hasil Voting</p>
               </a>

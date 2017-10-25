@@ -29,6 +29,8 @@ Route::prefix('rangers')->group(function(){
         ->middleware('isRangers');
   Route::get('buka-tutup', 'AdminController@bukaTutup')->name('buka-tutup')
         ->middleware('isRangers');
+  Route::get('hasil-voting', 'AdminController@hasilVoting')->name('hasil-voting')
+        ->middleware('isRangers');
 
         // update for POST buka-tutup
   Route::post('buka-tutup-fitur', 'AdminController@updateFitur')
