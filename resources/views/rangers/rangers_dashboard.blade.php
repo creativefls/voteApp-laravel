@@ -20,7 +20,11 @@
                     <i class="ti-user"></i> <strong>240</strong> total Delegates. <br>
                       <i class="ti-check-box"></i> <strong>{{ $user->totalPemilihKelas() }}</strong> Delegates sudah menvote. <br>
         							<i class="ti-info-alt"></i> <strong>{{ 240-$user->totalPemilihKelas() }}</strong> Delegates belum menvote.
-                  </p><br>
+                  </p>
+                {{-- link selengkapnya --}}
+                <div class="text-center">
+                  <a href="{{ url('rangers/kelas-workshop') }}" class="btn btn-primary btn-sm btn-fill" style="float:right"><i class="ti-search"></i> Selengkapnya</a><br>
+                </div>
           </div>
         </div>
 
@@ -39,7 +43,11 @@
                     <i class="ti-user"></i> <strong>240</strong> total Delegates. <br>
                       <i class="ti-check-box"></i> <strong>{{ $user->totalPemilihKomunitas() }}</strong> Delegates sudah menvote. <br>
         							<i class="ti-info-alt"></i> <strong>{{ 240-$user->totalPemilihKomunitas() }}</strong> Delegates belum menvote.
-                  </p><br>
+                  </p>
+                  {{-- link selengkapnya --}}
+                  <div class="text-center">
+                    <a href="{{ url('rangers/hasil-voting') }}" class="btn btn-primary btn-sm btn-fill" style="float:right"><i class="ti-search"></i> Selengkapnya</a><br>
+                  </div>
           </div>
         </div>
 
@@ -58,7 +66,11 @@
                     <i class="ti-user"></i> <strong>240</strong> total Delegates. <br>
                       <i class="ti-check-box"></i> <strong>{{ $user->totalPemilihMakan() }}</strong> Delegates sudah memilih. <br>
         							<i class="ti-info-alt"></i> <strong>{{ 240-$user->totalPemilihMakan() }}</strong> Delegates belum memilih.
-                  </p><br>
+                  </p>
+                  {{-- link selengkapnya --}}
+                  <div class="text-center">
+                    <a href="{{ url('rangers/hasil-voting') }}" class="btn btn-primary btn-sm btn-fill" style="float:right"><i class="ti-search"></i> Selengkapnya</a><br>
+                  </div>
           </div>
         </div>
     </div>

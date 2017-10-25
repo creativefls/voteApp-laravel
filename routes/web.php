@@ -27,6 +27,14 @@ Route::prefix('rangers')->group(function(){
         ->middleware('isRangers');
   Route::get('menu-makan', 'AdminController@menuMakan')->name('menu-makan')
         ->middleware('isRangers');
+  Route::get('buka-tutup', 'AdminController@bukaTutup')->name('buka-tutup')
+        ->middleware('isRangers');
+  Route::get('hasil-voting', 'AdminController@hasilVoting')->name('hasil-voting')
+        ->middleware('isRangers');
+
+        // update for POST buka-tutup
+  Route::post('buka-tutup-fitur', 'AdminController@updateFitur')
+          ->middleware('isRangers');
 });
 
 // route group for delegates
@@ -45,7 +53,7 @@ Route::prefix('delegates')->group(function(){
   Route::get('detail/komunitas/{id}', 'MemberController@detailOrganisasi')->where('id', '[0-9]+');
 });
 
-// Route POST untuk memilih
+// Route POST untuk delegates memilih
 Route::prefix('pilih')->group(function(){
   Route::post('komunitas', 'MemberController@pilihKomunitas')->name('pilih-komunitas')
           ->middleware('isDelegates');

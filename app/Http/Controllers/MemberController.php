@@ -108,7 +108,7 @@ class MemberController extends Controller
     public function pilihKomunitas(Request $request)
     {
       // cek dulu apakah user sudah memilih komunitas..
-      $user = User::all()->where('id', $request['user'])->first();;
+      $user = User::all()->where('id', $request['user'])->first();
       if ($user->komunitas_id == null) {
         // jika belum maka isi..
         $user->update([
