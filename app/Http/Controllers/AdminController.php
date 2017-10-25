@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use User;
+use App\User;
+use App\KelasWorkshop;
+use App\MenuMakan;
 
 class AdminController extends Controller
 {
@@ -13,9 +15,35 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    /* ------------------------------------------------------------------ */
+    /*                    Dashboard for Rangers                           */
+    /* ------------------------------------------------------------------ */
+    public function index()
     {
-      // kalau iya perbolehkan masuk...
-      return view('rangers.rangers_dashboard');
+      $user = new User();
+
+      return view('rangers.rangers_dashboard', ['user' => $user]);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*                   Controller Kelas Workshop                        */
+    /* ------------------------------------------------------------------ */
+    public function kelasWorkshop()
+    {
+      $kelas = KelasWorkshop::all();
+      $user  = new User();
+
+      return view('rangers.kelas_workshop', ['kelas' => $kelas, 'user' => $user]);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*                   Controller Menu Makan                            */
+    /* ------------------------------------------------------------------ */
+    public function menuMakan()
+    {
+      $makan = MenuMakan::all();
+      $user  = new User();
+
+      return view('rangers.menu_makan', ['makanan' => $makan, 'user' => $user]);
     }
 }
