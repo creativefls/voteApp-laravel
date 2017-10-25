@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\KelasWorkshop;
 use App\MenuMakan;
+use App\WaktuBuka;
 
 class AdminController extends Controller
 {
@@ -46,4 +47,26 @@ class AdminController extends Controller
 
       return view('rangers.menu_makan', ['makanan' => $makan, 'user' => $user]);
     }
+
+    /* ------------------------------------------------------------------ */
+    /*               Controller Buka Tutup Fitur                         */
+    /* ------------------------------------------------------------------ */
+    public function bukaTutup()
+    {
+      $fitur = WaktuBuka::all();
+
+      return view('rangers.buka_tutup', ['fitur' => $fitur]);
+    }
+
+    public function updateFitur(Request $request)
+    {
+      $fitur = WaktuBuka::all()->where('id', $request['fitur_id'])->first();
+      $fitur->update([
+        'is_buka' => $request['is_buka']
+      ]);
+
+      flash('Kelas berhasil diperbaharui')->success();
+      return redirect('rangers/buka-tutup');
+    }
+
 }

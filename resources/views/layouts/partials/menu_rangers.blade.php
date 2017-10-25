@@ -6,7 +6,7 @@
       </div>
 
       <ul class="nav">
-          <li class="{{ Route::currentRouteName() == "rangers" ? "active" : "" }}">
+          <li class="{{ Route::currentRouteName() == "dashboard" ? "active" : "" }}">
               <a href="{{ url('/') }}">
                   <i class="ti-panel"></i>
                   <p>Dashboard</p>
@@ -30,8 +30,8 @@
                   <p>Hasil Voting</p>
               </a>
           </li>
-            <li>
-                <a href="{{ url('/') }}">
+            <li class="{{ Route::currentRouteName() == "buka-tutup" ? "active" : "" }}">
+                <a href="{{ url('rangers/buka-tutup') }}">
                     <i class="ti-settings"></i>
                     <p>Buka-Tutup Kelas</p>
                 </a>
