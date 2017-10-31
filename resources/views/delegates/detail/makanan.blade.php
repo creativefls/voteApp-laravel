@@ -10,7 +10,7 @@
       <div class="card">
         <div class="header">
           <h4 class="title">{{ $makanan->nama }}</h4>
-          <p class="category"><i class="ti ti-calendar"></i> Diperbaharui pada {{ $makanan->updated_at }}</p>
+          <p class="category"><i class="ti ti-time"></i> Updated at {{ $makanan->updated_at->diffForHumans() }}</p>
         </div>
         <hr>
         <div class="content">
